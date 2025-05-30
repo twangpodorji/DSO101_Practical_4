@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/twangpodorji/DSO101_Practical_4.git']]])
             }
         }
         
@@ -28,7 +28,6 @@ pipeline {
             }
         }
     }
-    
     post {
         always {
             echo 'Pipeline completed!'
